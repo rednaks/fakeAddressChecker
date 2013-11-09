@@ -1,7 +1,32 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://fakeaddress/skin/overlay.css" type="text/css" ?>
 <overlay id="messengerWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <script type="application/x-javascript" src="overlay.js" />
+  <script type="application/x-javascript" src="chrome://fakeaddress/content/overlay.js" />
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/util.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/accountConfig.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/emailWizard.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/sanitizeDatatypes.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/fetchhttp.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/readFromXML.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/guessConfig.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/verifyConfig.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/fetchConfig.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/createInBackend.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/MyBadCertHandler.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountUtils.js" />
+
   <toolbar id="mail-bar3">
     <toolbarbutton id="fakeaddress-button"
       class="toolbarbutton-1"
