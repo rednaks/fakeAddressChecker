@@ -1,0 +1,3 @@
+content fakeaddress content/
+skin fakeaddress classic/1.0 skin/
+overlay chrome://messenger/content/messenger.xul chrome://fakeaddress/content/overlay.xul

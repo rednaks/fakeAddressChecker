@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://fakeaddress/skin/overlay.css" type="text/css" ?>
+<overlay id="messengerWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript" src="overlay.js" />
+  <toolbar id="mail-bar3">
+    <toolbarbutton id="fakeaddress-button"
+      class="toolbarbutton-1"
+      label="Check Now !"
+      type="button"
+      tooltiptext="Check the email authenticity"
+      oncommand="FakeAddress.check()"
+      />
+  </toolbar>
+</overlay>
