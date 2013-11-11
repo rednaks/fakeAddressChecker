@@ -105,12 +105,22 @@ var FakeAddress = {
       //  alert('Warning, this might be a fake email !\nThe message-id is : "'+this.messageID+'" instead of "<someRandomAlphanumericCharacters>@'+hostname);
         if(this.Mailerauthor === 'esprit.tn' /*esprit.tn to be replaced with a var checked from the database*/)
 		{
-		 if(this.MailermessageID !== this.Mailerauthor && this.MailermessageID !=="mail.gmail.com") //a remplacer avec un vercteur de hosts connus adequois 
+			var TableOfTrust = new Array(this.Mailerauthor.toString, "mail.gmail.com");
+			var threat = true;
+			for(i=0;i<TableOfTrust.length;i++)
 			{
-			alert('Warning, this might be a fake email !\nThe message-id is : "'+this.messageID+'" instead of "<someRandomAlphanumericCharacters>@'+hostname);
+				if(this.MailermessageID === TableOfTrust[i])
+				{
+					threat = false;
+				}
+		
 			}
-		else
-		alert('All seems ok, you should be careful though');
+				if(threat)
+				{
+					alert('Warning, this might be a fake email !\nThe message-id is : "'+this.messageID+'" instead of "<someRandomAlphanumericCharacters>@'+hostname);
+				}
+				else
+					alert('All seems ok, you should be careful though');
 		
 		}
 	}
