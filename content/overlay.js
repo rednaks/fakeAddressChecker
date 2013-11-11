@@ -100,29 +100,29 @@ var FakeAddress = {
   foundConfig:  function(config)
   {
     var hostname = config.incoming.hostname;
-    if(hostname === 'imap.googlemail.com'){
-      //if(this.messageID !== 'mail.google.com')
-      //  alert('Warning, this might be a fake email !\nThe message-id is : "'+this.messageID+'" instead of "<someRandomAlphanumericCharacters>@'+hostname);
-        if(this.Mailerauthor === 'esprit.tn' /*esprit.tn to be replaced with a var checked from the database*/)
+    //if(hostname === 'imap.googlemail.com'){
+        if(this.Mailerauthor === 'esprit.tn')  /*esprit.tn to be replaced with a var checked from the database*/
 		{
-			var TableOfTrust = new Array(this.Mailerauthor.toString, "mail.gmail.com");
+			var TableOfTrust = new Array(this.Mailerauthor, "mail.gmail.com","mail.google.com");
 			var threat = true;
-			for(i=0;i<TableOfTrust.length;i++)
+			for(i=0;i<=TableOfTrust.length;i++)
 			{
-				if(this.MailermessageID === TableOfTrust[i])
-				{
-					threat = false;
-				}
-		
+				if(TableOfTrust[i] === this.MailermessageID)
+				{threat = false;} 
 			}
 				if(threat)
 				{
 					alert('Warning, this might be a fake email !\nThe message-id is : "'+this.messageID+'" instead of "<someRandomAlphanumericCharacters>@'+hostname);
 				}
 				else
+				{
 					alert('All seems ok, you should be careful though');
-		
+				}
 		}
-	}
+		else 
+		{
+		alert("We do not support this provider.. for now"); 
+		}
+	//}
   }
 }
