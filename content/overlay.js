@@ -15,7 +15,32 @@ var FakeAddress = {
     }
 
     this.messageID = msgHdr.messageId;
+	
+	//getting *fake* sender mailer // 
+	
+	this.fullAuthor = msgHdr.author;
+	
+	var n = this.fullAuthor.indexOf("<");
+	var m = this.fullAuthor.indexOf(">");
 
+	this.Mailauthor = this.fullAuthor.slice(n+1,m);
+	
+	var at = this.Mailauthor.indexOf("@");
+
+	this.Mailerauthor = this.Mailauthor.slice(at+1,this.Mailauthor.length);
+	
+	delete window.n;
+	delete window.m;
+	
+	var at = this.messageID.indexOf("@");	
+	this.MailermessageID = this.messageID.slice(at+1,this.messageID.length);
+
+	
+	
+	delete window.at;
+	
+	// END_OF  //
+	
     var email = msgHdr.author;
     var reg = new RegExp('.*?([\\w-+]+(?:\\.[\\w-+]+)*@(?:[\\w-]+\\.)+[a-zA-Z]{2,7})');
     email = reg.exec(email)[1];
@@ -75,9 +100,29 @@ var FakeAddress = {
   foundConfig:  function(config)
   {
     var hostname = config.incoming.hostname;
-    if(hostname === 'imap.googlemail.com'){
-      if(this.messageID !== 'mail.google.com')
-        alert('Warning, this might be a fake email !\nThe message-id is : "'+this.messageID+'" instead of "<someRandomAlphanumericCharacters>@'+hostname);
-    }
+    //if(hostname === 'imap.googlemail.com'){
+        if(this.Mailerauthor === 'esprit.tn')  /*esprit.tn to be replaced with a var checked from the database*/
+		{
+			var TableOfTrust = new Array(this.Mailerauthor, "mail.gmail.com","mail.google.com");
+			var threat = true;
+			for(i=0;i<=TableOfTrust.length;i++)
+			{
+				if(TableOfTrust[i] === this.MailermessageID)
+				{threat = false;} 
+			}
+				if(threat)
+				{
+					alert('Warning, this might be a fake email !\nThe message-id is : "'+this.messageID+'" instead of "<someRandomAlphanumericCharacters>@'+hostname);
+				}
+				else
+				{
+					alert('All seems ok, you should be careful though');
+				}
+		}
+		else 
+		{
+		alert("We do not support this provider.. for now"); 
+		}
+	//}
   }
 }
